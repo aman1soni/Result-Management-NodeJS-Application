@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Student Results</title>
+</head>
+
+<body>
+    <div>
+        <button><a class="add-link" href="result-dashboard/add-result">Add Student</a></button>
+    </div>
+    <div class="container">
+        <h1 class="mb-4 ml-2 pt-3">Results</h1>
+        <% data.forEach(result=> { %>
+            <div class="card-body">
+                <h4 class="card-title">
+                    Roll Number:
+                    <%= result.roll_no %>
+                </h4>
+                <div class="card-subtitle text-muted mb-2">
+                    Student Name: <b>
+                        <%= result.stu_name %>
+                    </b>,
+                    Date of birth: <b>
+                        <%= new Date(result.dob).toISOString().split('T')[0] %>
+                    </b>
+                    Student Score: <b>
+                        <%= result.score %>
+                    </b>,
+                    <a href="result-dashboard/edit/<%= result.roll_no %>">Edit</a>
+                    <a href="result-dashboard/delete/<%= result.roll_no %>">Delete</a>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+</body>
+
+</html>
